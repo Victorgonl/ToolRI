@@ -8,7 +8,7 @@ ToolRI is under development and this is a prerelease of the tool. The tool will 
 
 ## Running ToolRI
 
-Download the executable for Linux or Windows in <a href="https://github.com/Victorgonl/ToolRI/releases">releases</a> <a></a> and run.
+Download the executable for Linux or Windows in <a href="https://github.com/Victorgonl/ToolRI/releases/tag/Pre-release">pre-release</a> <a></a> and run.
 
 ## Tesseract OCR
 
