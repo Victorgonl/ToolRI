@@ -4,7 +4,7 @@ ToolRI was created to simplify and standardize the creation of samples for the t
 
 ## Instalation
 
-### Pypi
+### PyPi
 
 Install the ToolRI package with `pip`:
 
