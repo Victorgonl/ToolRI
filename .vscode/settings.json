@@ -1,0 +1,25 @@
+{
+    "workbench.colorTheme": "Atom One Dark",
+    "python.analysis.typeCheckingMode": "basic",
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.formatOnSaveMode": "file",
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.formatOnSaveMode": "file",
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        },
+    },
+    "isort.args": [
+        "--profile",
+        "black"
+    ],
+    "isort.severity": {
+        "E": "Hint"
+    },
+    "python.analysis.autoImportCompletions": true,
+    "license.filename": "LICENSE",
+}
