@@ -1,0 +1,20 @@
+{
+	"name": "ToolRI",
+	"dockerFile": "../Dockerfile",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"ms-python.black-formatter",
+				"ms-python.isort",
+				"VisualStudioExptTeam.vscodeintellicode",
+				"njpwerner.autodocstring",
+				"ms-python.vscode-pylance",
+				"ultram4rine.vscode-choosealicense",
+				"njqdev.vscode-python-typehint",
+				"Gruntfuggly.todo-tree",
+				"akamud.vscode-theme-onedark"
+			]
+		}
+	}
+}
