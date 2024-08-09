@@ -1,0 +1,9 @@
+*__pycache__*
+*.egg-info*
+
+build/
+dist/
+
+.ignore
+
+src/toolri/toolri/controller/ToolRI-Settings.json
