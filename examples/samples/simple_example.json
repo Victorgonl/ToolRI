@@ -1,0 +1,57 @@
+[
+    {
+        "id": 0,
+        "text": "Nome completo:",
+        "box": [18,19,295,54],
+        "words": ["Nome","completo:"],
+        "boxes": [
+            [18,21,117,47],
+            [128,19,295,54]
+        ],
+        "label": "QUESTION",
+        "links": [
+            [0,1]
+        ]
+    },
+    {
+        "id": 1,
+        "text": "Cristine Taku\u00e1 Ferreira",
+        "box": [309,19,678,47],
+        "words": ["Cristine","Taku\u00e1","Ferreira"],
+        "boxes": [
+            [309,19,432,47],
+            [443,19,538,47],
+            [553,19,678,47]
+        ],
+        "label": "ANSWER",
+        "links": [
+            [0,1]
+        ]
+    },
+    {
+        "id": 2,
+        "text": "CPF:",
+        "box": [16,74,85,101],
+        "words": ["CPF:"],
+        "boxes": [
+            [16,74,85,101]
+        ],
+        "label": "QUESTION",
+        "links": [
+            [2,3]
+        ]
+    },
+    {
+        "id": 3,
+        "text": "123.567.987-99",
+        "box": [110,73,364,101],
+        "words": ["123.567.987-99"],
+        "boxes": [
+            [110,73,364,101]
+        ],
+        "label": "ANSWER",
+        "links": [
+            [2,3]
+        ]
+    }
+]

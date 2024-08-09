@@ -1,0 +1,29 @@
+[project]
+name = "toolri"
+dynamic = ["version"]
+authors = [
+    {name="Victor G. Lima", email="victorgonl@outlook.com"},
+]
+description = "A tool for extracting, labeling and linking entities in document images for Information Extraction tasks."
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "numpy",
+    "Pillow",
+    "pytesseract",
+    "customtkinter",
+    "CTkMessagebox",
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta:__legacy__"
+
+[project.urls]
+Homepage = "https://github.com/Victorgonl/ToolRI"
+Issues = "https://github.com/Victorgonl/ToolRI/issues"

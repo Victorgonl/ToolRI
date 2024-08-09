@@ -1,0 +1,20 @@
+# Micromamba environment file
+# https://marketplace.visualstudio.com/items?itemName=corker.vscode-micromamba
+
+name: toolri
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python
+  - make
+  - pyinstaller
+  - build
+  - twine
+  - pip:
+    - Pillow
+    - numpy==1.26.4
+    - pytesseract
+    - customtkinter
+    - CTkMessagebox
