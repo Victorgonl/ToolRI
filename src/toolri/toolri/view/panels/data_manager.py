@@ -18,6 +18,7 @@ NULL_NAME = "---"
 class DataEditorOptions(enum.Enum):
     DATA = "Data"
     JSON = "JSON"
+    SAMPLES = "Samples"
 
 
 class DataManager(Panel):
@@ -34,7 +35,9 @@ class DataManager(Panel):
                 self.__init_load_and_save_buttons()
             )
         self.__data_editor_frame = self.__init_tabview()
-        self.__json_data_frame = self.__init_json_data_frame(self.__data_editor_frame)
+        self.__json_data_text = self.__init_json_data_text(self.__data_editor_frame)
+        self.__samples_frame = self.__init_samples_frame(self.__data_editor_frame)
+        self.__samples_names_buttons: dict[str, customtkinter.CTkButton] = {}
         self.__data_buttons_frame = self.__init_data_editor(self.__data_editor_frame)
         self.__data_buttons: dict[int, customtkinter.CTkButton] = {}
 
@@ -49,14 +52,31 @@ class DataManager(Panel):
         self.__image_filename.configure(text=image_file_name)  # type: ignore
 
     def set_json_data(self, json_data: str):
-        self.__json_data_frame.delete("1.0", "end")
-        self.__json_data_frame.insert(
+        self.__json_data_text.delete("1.0", "end")
+        self.__json_data_text.insert(
             index="end",
             text=json_data,
         )
 
+    def set_samples_names(self, samples_names: list[str]):
+        for sample_name in self.__samples_names_buttons:
+            if sample_name not in samples_names:
+                self.__samples_names_buttons[sample_name].destroy()
+        for sample_name in samples_names:
+            if sample_name not in self.__samples_names_buttons:
+                sample_button = ToolRIButton(
+                    self.__samples_frame,
+                    text=sample_name,
+                    command=functools.partial(
+                        self._toolri_controller.load_image, sample_name
+                    ),
+                    fg_color=TEXT_FG_COLOR,
+                )
+                sample_button.grid(sticky="w")
+                self.__samples_names_buttons[sample_name] = sample_button
+
     def get_json_data(self):
-        return self.__json_data_frame.get("1.0", "end-1c")
+        return self.__json_data_text.get("1.0", "end-1c")
 
     def __init_clear_buttons(self):
         clear_labels_button = ToolRIButton(
@@ -78,7 +98,7 @@ class DataManager(Panel):
         clear_labels_button.pack(side="bottom", fill="x", expand=False)
         clear_links_button.pack(side="bottom", fill="x", expand=False)
 
-    def __init_json_data_frame(self, tabview):
+    def __init_json_data_text(self, tabview):
 
         frame = ToolRIFrame(tabview.tab(DataEditorOptions.JSON.value))
         text = ToolRITextBox(frame, corner_radius=25)
@@ -104,12 +124,21 @@ class DataManager(Panel):
         data_editor_frame.pack(expand=True, fill="both")
         return data_editor_frame
 
-    def __init_tabview(self):
+    def __init_samples_frame(self, tabview):
+        frame = ToolRIScrollableFrame(
+            tabview.tab(DataEditorOptions.SAMPLES.value),
+            corner_radius=25,
+            fg_color=TEXT_FG_COLOR,
+            scrollbar_button_color=TEXT_FG_COLOR,
+        )
+        frame.pack(expand=True, fill="both")
+        return frame
 
+    def __init_tabview(self):
         tabview = ToolRITabView(self._master, width=250, border_width=10)
         tabview.pack(expand=True, fill="both")
-        tabview.add(DataEditorOptions.DATA.value)
-        tabview.add(DataEditorOptions.JSON.value)
+        for name in DataEditorOptions:
+            tabview.add(name.value)
 
         return tabview
 

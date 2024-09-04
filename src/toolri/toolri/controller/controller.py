@@ -1,3 +1,4 @@
+import glob
 import os
 import typing
 
@@ -368,6 +369,16 @@ class ToolRIController:
         json_data = self.__toolri_data.get_json_data()
         self.__toolri_view.data_manager.set_json_data(json_data=json_data)
 
+    def __update_samples(self):
+        samples_names: list[str] = []
+        for image_extension in IMAGE_FILE_EXTENSIONS:
+            for f in glob.glob(f"{self.__image_folder}/*.{image_extension}"):
+                f = os.path.basename(f)
+                f = os.path.splitext(f)[0]
+                samples_names.append(f)
+        samples_names = sorted(samples_names)
+        self.__toolri_view.data_manager.set_samples_names(samples_names=samples_names)
+
     def __update_view_buttons_data(self, updated_entities_ids=None):
         buttons_ids = self.__toolri_view.data_manager.get_entity_buttons_ids()
         entities_ids = self.__toolri_data.get_entities_ids()
@@ -418,6 +429,8 @@ class ToolRIController:
         self.__update_file_names()
         self.__check_data_changed()
         self.__update_view_json_data()
+        self.__update_samples()
+
         if image_changed:
             self.__update_image()
         if data_changed:
@@ -481,11 +494,18 @@ class ToolRIController:
         self.__checkpoint_json_data = json_data
         self.__update_view(data_changed=False, image_changed=False)
 
-    def load_image(self):
-        image_path = self.__toolri_view.data_manager.open_file(
-            initialdir=self.__image_folder,
-            filetypes=[("Image files", OPEN_IMAGE_EXTENSIONS)],
-        )
+    def load_image(self, sample_name: typing.Optional[str] = None):
+        if sample_name is None:
+            image_path = self.__toolri_view.data_manager.open_file(
+                initialdir=self.__image_folder,
+                filetypes=[("Image files", OPEN_IMAGE_EXTENSIONS)],
+            )
+        else:
+            for image_extension in IMAGE_FILE_EXTENSIONS:
+                p = f"{self.__image_folder}/{sample_name}.{image_extension}"
+                if os.path.isfile(p):
+                    image_path = p
+                    break
         if image_path:
             try:
                 self.__load_image(image_path=image_path)
@@ -493,11 +513,14 @@ class ToolRIController:
             except:
                 pass
 
-    def load_data(self):
-        data_path = self.__toolri_view.data_manager.open_file(
-            initialdir=self.__data_folder,
-            filetypes=[("Data files", OPEN_DATA_EXTENSIONS)],
-        )
+    def load_data(self, sample_name=None):
+        if sample_name is None:
+            data_path = self.__toolri_view.data_manager.open_file(
+                initialdir=self.__data_folder,
+                filetypes=[("Data files", OPEN_DATA_EXTENSIONS)],
+            )
+        else:
+            data_path = f"{self.__data_folder}/{sample_name}.{DATA_FILE_EXTENSIONS[0]}"
         if data_path:
             try:
                 self.__load_data(data_path=data_path)
