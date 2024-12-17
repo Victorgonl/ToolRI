@@ -13,10 +13,10 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-    "numpy",
+    "numpy==1.26.4",
     "Pillow",
     "pytesseract",
-    "customtkinter",
+    "customtkinter==5.2.2",
     "CTkMessagebox",
 ]
 

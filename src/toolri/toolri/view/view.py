@@ -3,7 +3,7 @@ import platform
 import CTkMessagebox
 import customtkinter
 
-from ...version import NAME, URL, VERSION
+from ...version import NAME, VERSION
 from .panels import (
     DataManager,
     ImageCanvas,
@@ -17,12 +17,17 @@ from .styles import *
 if typing.TYPE_CHECKING:
     from ..controller import ToolRIController
 
-MAIN_WINDOW_WIDTH = 1000
+
+BASE_WIDTH = 1368
+BASE_HEIGHT = 768
+
+MAIN_WINDOW_WIDTH = BASE_WIDTH
 
 
 class ToolRIView:
-    def __init__(self, toolri_controller) -> None:
+    def __init__(self, toolri_controller: "ToolRIController") -> None:
         self.__window = self.__init_window()
+        self.__set_auto_scaling(self.__window)
         self.__toolri_controller = toolri_controller
         self.__frames = {}
         self.__init_panels()
@@ -38,6 +43,14 @@ class ToolRIView:
             window.attributes("-zoomed", True)
         window.update()
         return window
+
+    def __set_auto_scaling(self, window: customtkinter.CTk):
+        screen_width = window.winfo_screenwidth()
+        screen_height = window.winfo_screenheight()
+        width_scale = screen_width / BASE_WIDTH
+        height_scale = screen_height / BASE_HEIGHT
+        scale_factor = min(width_scale, height_scale)
+        customtkinter.set_widget_scaling(scale_factor)
 
     def __create_frame(
         self,

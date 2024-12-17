@@ -16,5 +16,5 @@ dependencies:
     - Pillow
     - numpy==1.26.4
     - pytesseract
-    - customtkinter
+    - customtkinter==5.2.2
     - CTkMessagebox
