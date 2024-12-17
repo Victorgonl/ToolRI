@@ -10,7 +10,7 @@ dependencies:
   - python
   - make
   - pyinstaller
-  - build
+  - python-build
   - twine
   - pip:
     - Pillow
