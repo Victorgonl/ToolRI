@@ -7,3 +7,5 @@ dist/
 .ignore
 
 src/toolri/toolri/controller/ToolRI-Settings.json
+
+.pypirc
