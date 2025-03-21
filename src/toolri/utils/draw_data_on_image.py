@@ -200,3 +200,54 @@ def draw_data_on_image(
                         draw.line(line, fill=color, width=3 * line_width)
     image_boxes = PIL.Image.alpha_composite(image, image_boxes)
     return image_boxes
+
+
+def create_highlight_sample_image(
+    sample,
+    entities_id2label: typing.Optional[dict] = None,
+    # relations_id2label: typing.Optional[dict] = None,
+    labels: typing.Union[None, list[ToolRILabel]] = None,
+    draw_links=True,
+    labels_color=True,
+    links_color=True,
+    box_outline_width=None,
+    box_outline_color="black",
+    fill_color_alpha=38.0,
+    links_color_alpha=38.0,
+    draw_arrow=True,
+):
+    def convert_sample_data(sample):
+        data = []
+        for i in range(len(sample["entities"])):
+            label = sample["labels"][i]
+            label = entities_id2label[label] if entities_id2label is not None else label
+            links = []
+            for e in sample["key_values"][i]:
+                links.append([i, e])
+            data.append(
+                {
+                    "id": i,
+                    "label": label,
+                    "box": sample["boxes"][i],
+                    "boxes": sample["words_boxes"][i],
+                    "links": links,
+                }
+            )
+        return data
+
+    image = sample["image"]
+    data = convert_sample_data(sample)
+
+    return draw_data_on_image(
+        image,
+        data,
+        labels=labels,
+        draw_arrow=draw_arrow,
+        draw_links=draw_links,
+        box_outline_color=box_outline_color,
+        box_outline_width=box_outline_width,
+        labels_color=labels_color,
+        links_color=links_color,
+        fill_color_alpha=fill_color_alpha,
+        links_color_alpha=links_color_alpha,
+    )

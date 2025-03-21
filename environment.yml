@@ -13,8 +13,4 @@ dependencies:
   - python-build
   - twine
   - pip:
-    - Pillow
-    - numpy==1.26.4
-    - pytesseract
-    - customtkinter==5.2.2
-    - CTkMessagebox
+    - -r requirements.txt

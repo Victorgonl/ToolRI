@@ -1,11 +1,16 @@
 # toolri
 Pillow
-numpy==1.26.4
+numpy
 pytesseract
-customtkinter==5.2.2
+customtkinter
 CTkMessagebox
 
 # project
 pyinstaller
 build
 twine
+
+# notebooks examples
+ipython
+pandas
+dataset
