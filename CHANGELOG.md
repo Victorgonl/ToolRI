@@ -1,17 +1,31 @@
 # ToolRI Changelog
 
-## 1.0.1
+### 1.0.4
 
-**Released date:** 2024-08-09
+Mar 21, 2024
 
-### Changed
+- $\textbf{{\color{MediumSpringGreen}[New]}}$ Util to create highlight image from dataset sample. [[3494e80]](https://github.com/Victorgonl/ToolRI/commit/be5dde6756c44ba13d814da64e782984a4ce9055)
 
-- Update README. [[8b6a632]](https://github.com/Victorgonl/ToolRI/commit/8b6a632)
+### 1.0.3
 
-## 1.0.0
+Dec 17, 2024
 
-**Released date:** 2024-08-09
+- $\textbf{{\color{MediumSpringGreen}[New]}}$ Tab to view and load samples in current folder.
+- $\textbf{{\color{OrangeRed}[Fix]}}$ Minor fixes.
+- $\textbf{{\color{Gold}[Source]}}$ Code improvements.
 
-### Added
+### 1.0.1
 
-- Initial release. [[5ef59a9]](https://github.com/Victorgonl/ToolRI/commit/5ef59a9)
+Aug 9, 2024
+
+- $\textbf{{\color{violet}[Doc]}}$ Update README.
+
+### 1.0.0 "Initial"
+
+Aug 9, 2024
+
+- $\textbf{{\color{MediumSpringGreen}[New]}}$ Initial release. [[5ef59a9]](https://github.com/Victorgonl/ToolRI/commit/5ef59a9)
+
+<!---
+$\textbf{{\color{RoyalBlue}[Change]}}$
+-->
